@@ -14,7 +14,6 @@ def main_page(request):
 
 
 
-
 def create_movie(request):
 
     return render(request, 'movies/create_movie.html')
