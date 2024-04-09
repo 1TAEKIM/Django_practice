@@ -11,7 +11,15 @@
   {% block content %}
   <h1> 이 곳에서 영화를 생성합니다.</h1>
 
-  <a href = 'http://localhost:8000/movies/main_page'>메인 페이지</a>
+  <form action="/movies/main_page" method="GET">
+
+    <label for="create_movie_id">영화 이름: </label>
+    <input type="text" name="create_movie" id="create_movie_id">
+    <input type="submit" value="submit">
+
+  </form>
+
+  <a href = '/movies/main_page'>메인 페이지</a>
 
   {% endblock content %}
 </body>
