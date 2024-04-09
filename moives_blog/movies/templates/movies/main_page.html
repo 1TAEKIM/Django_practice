@@ -13,7 +13,9 @@
 
   <h3> 영화 블로그 내용을 관리합니다. </h3>
 
-  <a href= "http://localhost:8000/movies/create_movie">영화 추가</a>
+    <a href="/movies/detail_page?create_movie={{ create_movie }}">{{ create_movie }}</a>
+    <br>
+    <a href= "/movies/create_movie">영화 추가</a>
 
   {% endblock content %}
 </body>
