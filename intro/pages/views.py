@@ -14,3 +14,12 @@ def lotto(request):
     }
 
     return render(request, 'pages/lotto.html', context)
+
+def dinner(request, menu, num):
+
+    context = {
+        'menu' : menu,
+        'num' : num
+    }
+
+    return render(request, 'pages/dinner.html', context)
