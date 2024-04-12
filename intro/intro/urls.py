@@ -17,8 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pages import views
+app_name = 'intro'
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("lotto/", views.lotto)
+    path("lotto/", views.lotto),
+    # path('dinner/<str:menu>/<int:num>/')
 ]
