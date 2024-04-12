@@ -1,0 +1,22 @@
+{% extends "movies/base.html" %}
+
+{% block content %}
+
+<h1>이 곳에서 영화 정보를 수정합니다.</h1>
+
+<form action="" method="POST">
+
+  {% csrf_token %}
+  <label for="update_movie_id">영화 제목: </label>
+  <input type="text" name="update_movie_title" id="update_movie_id">
+  <br>
+
+  <label for='update_movie_content'>영화 콘텐츠: </label>
+  <input type="comment" name="update_movie_content" id="update_movie_content"
+  style='width: 300px; height: 300px;'>
+
+  <input type="submit" value="수정">
+
+</form>
+
+{% endblock content %}

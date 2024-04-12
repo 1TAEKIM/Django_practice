@@ -10,9 +10,24 @@
 
     {% block content %}
 
-    <h1>{{ create_movie }} 영화 상세 페이지</h1>
-
+    <h1>영화 상세 페이지</h1>
+    <hr/>
+    <o>{{movie.pk}}번 째 영화</o>
+    <p>영화 제목: {{movie.title}}</p>
+    <p>영화 콘텐츠: {{movie.content}}</p>
+    <p>영화 제작일: {{movie.created_at}}</p>
+    <p>영화 개봉 여부: {{movie.is_open}}</p>
+    <hr/>
     
+    <a href="{% url 'movies:update' pk=movie.pk%}" >
+        <input type='submit' value='수정'></a>
+
+    <hr/>
+
+    <form action="{% url 'movies:delete' pk=movie.pk %}" method="POST">
+        {% csrf_token %}
+        <input type='submit' value='삭제'>
+    </form>
 
     {% endblock content %}
 </body>
