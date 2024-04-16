@@ -37,17 +37,26 @@ def review_detail(request, pk):
 def review_update(request, pk):
     
     review = reviews.objects.get(pk=pk)
-    
+    if request.method == 'POST':
+        form = reviewsForm(request.POST, instance=review)
+        if form.is_valid():
+            review = form.save()
+            return redirect('reviews:review_detail', pk=review.pk)
+    else:
+        form = reviewsForm(instance=review)
+        
     context = {
+        'form' : form,
         'review' : review
     }
     
-    if request.method == 'POST':
-        data = request.POST
-        reviews.objects.filter(pk=pk).update(
-            review_title=data.get('update_review_title'), 
-            review_content=data.get('update_review_content')
-        )
-        return redirect('reviews:review_detail', pk=pk)
-    
     return render(request, 'reviews/review_update.html', context)
+
+
+def review_delete(request, pk):
+    
+    review = reviews.objects.get(pk=pk)
+    if review:
+        review.delete()
+        
+    return redirect('reviews:review_list')

@@ -3,16 +3,10 @@
 {% block content %}
 <h1>리뷰 수정 페이지</h1>
 
-<form action="{% url 'reviews:review_detail' pk=review.pk%}" method="POST">
+<form action="{% url 'reviews:review_update' pk=review.pk%}" method="POST">
   {% csrf_token %}
   
-  <label for="update_review_id">리뷰 제목: </label>
-  <input type="text" name="update_review_title" id="update_review_id">
-  <br>
-
-  <label for='update_review_content'>리뷰 내용: </label>
-  <input type="comment" name="update_review_content" id="update_review_content"
-  style='width: 300px; height: 300px;'>
+  {{ form }}
 
 <input type='submit' value='수정 완료'>
 

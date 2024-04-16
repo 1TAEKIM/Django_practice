@@ -22,6 +22,23 @@
     <input type="comment" name="create_movie_content" id="create_movie_content"
     style='width: 300px; height: 300px;'>
 
+    <label for='create_movie_is_open'>영화 개봉 여부: </label>
+    <input type="checkbox" name="create_movie_is_open" id="create_movie_is_open">
+    <input type="hidden" name="create_movie_is_open" id="create_movie_is_open_hidden" value="False">  <!-- 초기값은 False -->
+    
+    <script>
+    document.getElementById('create_movie_is_open').addEventListener('change', function() {
+        var checkbox = document.getElementById('create_movie_is_open');
+        var hiddenInput = document.getElementById('create_movie_is_open_hidden');
+        
+        if (checkbox.checked) {
+            hiddenInput.value = "True";  // 체크됐을 때 hidden input 필드의 값을 True로 변경
+        } else {
+            hiddenInput.value = "False";  // 체크가 해제됐을 때 hidden input 필드의 값을 False로 변경
+        }
+    });
+    </script>
+
     <input type="submit" value="제출">
 
   </form>

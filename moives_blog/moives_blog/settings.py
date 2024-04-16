@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# settings.py에 적혀있지는 않지만 Django 내부적으로
+# 기초 모델은 'auth.User'로 설정되어 있음
+# AUTH_USER_MODEL = 'auth.User'
+
+# 내가 생성한 User Model로 기본 User Model 변경
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 

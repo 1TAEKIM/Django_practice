@@ -11,14 +11,11 @@
 <p>리뷰 내용: {{review.review_content}}</p>
 <p>최근 리뷰 업데이트 시간: {{review.review_date}}</p>
 
-<a href="{% url 'reviews:review_update' pk=review.pk%}" >
-  <input type='submit' value='수정'></a>
-
 <hr/>
 
-{% comment %} <form action="{% url 'reviews:review_delete' pk=review.pk %}" method="POST">
-  {% csrf_token %}
-  <input type='submit' value='삭제'>
-</form> {% endcomment %}
+<a href="{% url 'reviews:review_update' pk=review.pk%}" >[리뷰 수정하기]</a><br>
+<a href="{% url 'reviews:review_delete' pk=review.pk %}" class="review_delete_btn">[리뷰 삭제하기]</a>
+<br>
+<a href="{% url 'reviews:review_list' %}" >[리뷰 목록 보러가기]</a><br>
 
 {% endblock content %}

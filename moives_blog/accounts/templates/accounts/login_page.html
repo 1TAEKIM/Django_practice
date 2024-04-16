@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% extends "movies/base.html" %}
+{% extends "movies/base.html" %}
 
-    {% block content %}
-    <h1>로그인 페이지</h1>
-
-    <form action="" method="">
-        <label for=""></label>
-        <input type="email" name="" id="" placeholder="이메일">
-        <input type="password" name="" id="" placeholder="비밀번호">
-        <input type="submit" value="로그인">
-
+{% block content %}
+    <form action="{% url "accounts:login" %}" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="로그인하기">
     </form>
+    <a href="{% url "accounts:signup" %}">회원가입하기</a>
 
-    {% endblock content %}
-</body>
-</html>
+{% endblock content %}

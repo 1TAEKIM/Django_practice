@@ -21,7 +21,8 @@ def create_movie(request):
         
         new_movie = Movie.objects.create(
             title=data.get('create_movie_title'),
-            content=data.get('create_movie_content')
+            content=data.get('create_movie_content'),
+            is_open=data.get('create_movie_is_open')
         )
         
         return redirect('movies:detail', pk=new_movie.pk)
