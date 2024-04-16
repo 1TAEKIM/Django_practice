@@ -11,15 +11,39 @@
   {% block content %}
   <h1> 이 곳에서 영화를 생성합니다.</h1>
 
-  <form action="/movies/main_page" method="GET">
+  <form action="" method="POST">
 
-    <label for="create_movie_id">영화 이름: </label>
-    <input type="text" name="create_movie" id="create_movie_id">
-    <input type="submit" value="submit">
+    {% csrf_token %}
+    <label for="create_movie_id">영화 제목: </label>
+    <input type="text" name="create_movie_title" id="create_movie_id">
+    <br>
+
+    <label for='create_movie_content'>영화 콘텐츠: </label>
+    <input type="comment" name="create_movie_content" id="create_movie_content"
+    style='width: 300px; height: 300px;'>
+
+    <label for='create_movie_is_open'>영화 개봉 여부: </label>
+    <input type="checkbox" name="create_movie_is_open" id="create_movie_is_open">
+    <input type="hidden" name="create_movie_is_open" id="create_movie_is_open_hidden" value="False">  <!-- 초기값은 False -->
+    
+    <script>
+    document.getElementById('create_movie_is_open').addEventListener('change', function() {
+        var checkbox = document.getElementById('create_movie_is_open');
+        var hiddenInput = document.getElementById('create_movie_is_open_hidden');
+        
+        if (checkbox.checked) {
+            hiddenInput.value = "True";  // 체크됐을 때 hidden input 필드의 값을 True로 변경
+        } else {
+            hiddenInput.value = "False";  // 체크가 해제됐을 때 hidden input 필드의 값을 False로 변경
+        }
+    });
+    </script>
+
+    <input type="submit" value="제출">
 
   </form>
 
-  <a href = '/movies/main_page'>메인 페이지</a>
+  <a href = 'movies:main'>메인 페이지</a>
 
   {% endblock content %}
 </body>

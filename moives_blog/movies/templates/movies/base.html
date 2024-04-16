@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>영화 블로그</title>
+  {% load static %}
+  <link rel='stylesheet' href="{% static "css/styles.css" %}"
 </head>
 <body>
   <nav>
     <a href = '/movies/main_page'>[MAIN]</a>
     <a href = '/movies/create_movie'>[CREATE]</a>
-    <a href = '/accounts/login_page'>[LOGIN]</a>
+    <a href = '/reviews/review_list'>[REVIEWS]</a>
+    <a href = '/accounts/login'>[LOGIN]</a>
   </nav>
   {% block content %}
   {% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "movies/base.html" %}
+
+{% block content %}
+<h1>리뷰 생성 페이지</h1>
+
+<form action="{% url 'reviews:review_create' %}" method="POST">
+  {% csrf_token %}
+
+  {{ form }}
+
+  <input type='submit' value='작성 완료'>
+
+</form>
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "movies/base.html" %}
+
+
+{% block content %}
+
+<h1>리뷰 상세보기</h1>
+<hr/>
+<o>{{review.pk}}번째 리뷰</o>
+<p>영화 제목: {{review.review_movie}}</p>
+<p>리뷰 제목: {{review.review_title}}</p>
+<p>리뷰 내용: {{review.review_content}}</p>
+<p>최근 리뷰 업데이트 시간: {{review.review_date}}</p>
+
+<hr/>
+
+<a href="{% url 'reviews:review_update' pk=review.pk%}" >[리뷰 수정하기]</a><br>
+<a href="{% url 'reviews:review_delete' pk=review.pk %}" class="review_delete_btn">[리뷰 삭제하기]</a>
+<br>
+<a href="{% url 'reviews:review_list' %}" >[리뷰 목록 보러가기]</a><br>
+
+{% endblock content %}

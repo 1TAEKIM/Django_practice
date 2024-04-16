@@ -1,0 +1,15 @@
+{% extends "movies/base.html" %}
+
+{% block content %}
+<h1>리뷰 수정 페이지</h1>
+
+<form action="{% url 'reviews:review_update' pk=review.pk%}" method="POST">
+  {% csrf_token %}
+  
+  {{ form }}
+
+<input type='submit' value='수정 완료'>
+
+</form>
+
+{% endblock content %}

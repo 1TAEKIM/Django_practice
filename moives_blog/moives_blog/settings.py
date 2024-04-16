@@ -27,12 +27,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# settings.py에 적혀있지는 않지만 Django 내부적으로
+# 기초 모델은 'auth.User'로 설정되어 있음
+# AUTH_USER_MODEL = 'auth.User'
+
+# 내가 생성한 User Model로 기본 User Model 변경
+AUTH_USER_MODEL = 'accounts.User'
 
 # Application definition
 
 INSTALLED_APPS = [
     "movies",
     "accounts",
+    "reviews",
+    "django_extensions",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -77,8 +85,12 @@ WSGI_APPLICATION = "moives_blog.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "django_test_db",
+        "USER": "root",
+        "PASSWORD": "root1234",
+        "HOST": "127.0.0.1",
+        "PORT": "3306"
     }
 }
 

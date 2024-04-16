@@ -12,8 +12,19 @@
   <h1> 영화 블로그 프로젝트 메인 페이지</h1>
 
   <h3> 영화 블로그 내용을 관리합니다. </h3>
+    {% for movies in movies %}
+      <a href="{% url 'movies:detail' pk=movies.pk %}">
+        <li>{{movies.title}}</li></a>
 
-    <a href="/movies/detail_page?create_movie={{ create_movie }}">{{ create_movie }}</a>
+      {% if movies.is_open %}
+      
+      <p>개봉여부 : <input type='checkbox' checked /></p>
+      {% else %}
+      <p>개봉여부 : <input type='checkbox' /></p>
+      {% endif %}
+
+    {% endfor %}
+
     <br>
     <a href= "/movies/create_movie">영화 추가</a>
 
