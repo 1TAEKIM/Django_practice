@@ -22,3 +22,4 @@ class Comment(models.Model):
     content = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     review = models.ForeignKey(reviews, on_delete=models.CASCADE, related_name="comments")
+    

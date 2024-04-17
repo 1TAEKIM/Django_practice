@@ -38,11 +38,12 @@ def index(request):
 @login_required
 def info(request):
     
-    review = reviews.objects.filter(user_id=request.user.id)
+    reviews = request.user.reviews.all()
+    comments = Comment.objects.filter(review__in=reviews)
     
     context = {
-        'reviews' : review,
-
+        'reviews' : reviews,
+        'comments' : comments
     }
     
     

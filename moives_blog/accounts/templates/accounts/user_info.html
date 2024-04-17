@@ -12,21 +12,27 @@
 <hr/>
 
 <h2>작성한 리뷰 목록</h2>
-
 {% if reviews %}
-{% for review in reviews %}
-  <li>
-  <a href="{% url "reviews:review_detail" pk=review.pk%}">
-    리뷰 제목: {{review.review_title}}</a>
-  </li>
-{% endfor %}
+  <ol>  
+  {% for review in reviews %}
+  <li><a href="{% url "reviews:review_detail" pk=review.pk%}">
+    리뷰 제목: {{review.review_title}}</a></li>
+  {% endfor %}
+  </ol>
 {% else %}
-<li>작성한 리뷰가 없습니다.</li>
+  <li>작성한 리뷰가 없습니다.</li>
 {% endif %}
+
 <hr/>
 <h2>작성한 댓글 목록</h2>
 {% if comments %}
+  <ol>
+    {% for comment in comments %}
+      <li><a href="{% url "reviews:review_detail" comment.review.id %}">댓글: {{comment.content}}</a>
+      </li>
+    {% endfor %}
 
+  </ol>
 {% else %}
 <li>작성한 댓글이 없습니다.</li>
 {% endif %}
