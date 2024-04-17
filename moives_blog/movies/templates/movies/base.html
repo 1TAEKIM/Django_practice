@@ -12,7 +12,13 @@
     <a href = '/movies/main_page'>[MAIN]</a>
     <a href = '/movies/create_movie'>[CREATE]</a>
     <a href = '/reviews/review_list'>[REVIEWS]</a>
-    <a href = '/accounts/login'>[LOGIN]</a>
+
+    {% if user.is_authenticated %}
+      <a href = '/accounts/logout'>[LOGOUT]</a>
+      <a href = '/accounts/info'>[PROFILE]</a>
+    {% else %}
+      <a href="/accounts/login">[LOGIN]</a>
+    {% endif %}
   </nav>
   {% block content %}
   {% endblock content %}

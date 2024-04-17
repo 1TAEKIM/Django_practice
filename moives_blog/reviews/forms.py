@@ -1,5 +1,5 @@
 from django import forms
-from .models import reviews
+from .models import reviews, Comment
 
 class reviewsForm(forms.ModelForm):
     class Meta:
@@ -17,3 +17,8 @@ class reviewsForm(forms.ModelForm):
         error_messages = {
             
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']

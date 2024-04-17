@@ -5,6 +5,9 @@ from django.contrib.auth import logout as auth_logout
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from reviews.models import reviews, Comment
+
+
 
 # Create your views here.
 def login(request):
@@ -32,10 +35,22 @@ def index(request):
     
     return render(request, 'accounts/index.html')
 
+@login_required
 def info(request):
     
-    return render(request, 'accounts/user_info.html')
+    reviews = request.user.reviews.all()
+    comments = Comment.objects.filter(review__in=reviews)
+    
+    context = {
+        'reviews' : reviews,
+        'comments' : comments
+    }
+    
+    
+    return render(request, 'accounts/user_info.html', context)
 
+    
+    
 def logout(request):
     auth_logout(request)
     return redirect('accounts:login')
